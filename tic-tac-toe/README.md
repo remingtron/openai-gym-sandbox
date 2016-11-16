@@ -1,0 +1,1 @@
+Execute tests by running `pytest` from command line
