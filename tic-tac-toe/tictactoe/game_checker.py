@@ -1,4 +1,6 @@
 class GameChecker:
+
+    # move this into state as is_finished and winner methods?
     @staticmethod
     def won_game(state, player):
         return GameChecker.won_in_row(player, state, 0) or \
