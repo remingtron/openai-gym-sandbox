@@ -5,13 +5,16 @@ from keras.optimizers import SGD
 
 
 class Teacher:
-    def calculate_q_values(self, state, player):
+    def calculate_q_values(self, state):
         print('a')
 
     @staticmethod
-    def convert_state_to_inputs(state, player):
-        current_player_state = (state.flatten() == player).astype(int)
-        other_player_state = numpy.logical_and(state.flatten() > 0, state.flatten() != player).astype(int)
+    def convert_state_to_inputs(state):
+        player = state.current_player
+        board = state.board
+
+        current_player_state = (board.flatten() == player).astype(int)
+        other_player_state = numpy.logical_and(board.flatten() > 0, board.flatten() != player).astype(int)
         return numpy.concatenate((current_player_state, other_player_state))
 
     @staticmethod

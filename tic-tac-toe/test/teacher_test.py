@@ -1,5 +1,7 @@
 import unittest
 import numpy
+
+from tictactoe.state import State
 from tictactoe.teacher import Teacher
 
 
@@ -18,5 +20,5 @@ class TeacherTest(unittest.TestCase):
         self.assert_converts_correctly(numpy.array([[1, 2, 0], [2, 1, 0], [2, 0, 1]]), 1, expected)
 
     def assert_converts_correctly(self, state, player, expected):
-        result = Teacher.convert_state_to_inputs(state, player)
+        result = Teacher.convert_state_to_inputs(State(state, player))
         self.assertTrue(numpy.array_equal(result, expected), "expected: {}, got: {}".format(expected, result))
