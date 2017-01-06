@@ -6,6 +6,10 @@ from tictactoe.state import State
 
 class StateTest(unittest.TestCase):
 
+    def test_defaults_state_and_turn(self):
+        self.assertTrue(numpy.array_equal(State().board, numpy.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])))
+        self.assertEqual(State().current_player, 1)
+
     def test_take_turn_adds_current_player_to_specified_position(self):
         state = State(numpy.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), 1)
         state.take_turn(1, 2)
@@ -58,7 +62,10 @@ class StateTest(unittest.TestCase):
         self.assertEqual(1, State(numpy.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), 1).winner())
 
     def test_returns_one_if_second_diagonal_all_belong_to_player_one(self):
-        self.assertTrue(1, State(numpy.array([[0, 0, 1], [0, 1, 0], [1, 0, 0]]), 1).winner())
+        self.assertEqual(1, State(numpy.array([[0, 0, 1], [0, 1, 0], [1, 0, 0]]), 1).winner())
 
     def test_returns_two_if_second_diagonal_all_belong_to_player_two(self):
-        self.assertTrue(2, State(numpy.array([[0, 0, 2], [0, 2, 0], [2, 0, 0]]), 1).winner())
+        self.assertEqual(2, State(numpy.array([[0, 0, 2], [0, 2, 0], [2, 0, 0]]), 1).winner())
+
+    def test_returns_zero_if_no_winner(self):
+        self.assertEqual(0, State(numpy.array([[1, 1, 2], [2, 2, 1], [1, 1, 2]]), 1).winner())

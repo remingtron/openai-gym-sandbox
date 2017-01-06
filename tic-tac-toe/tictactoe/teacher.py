@@ -21,7 +21,7 @@ class Teacher:
     def create_model():
         model = Sequential()
         model.add(Dense(12, input_dim=18, activation='relu', init='normal'))  # hidden layer, 18 inputs
-        model.add(Dense(9, activation='sigmoid', init='normal'))  # output layer, one output for each space
+        model.add(Dense(9, activation='tanh', init='normal'))  # output layer, one output for each space
         model.summary()
 
         optimizer = SGD(lr=0.1, momentum=0.9)

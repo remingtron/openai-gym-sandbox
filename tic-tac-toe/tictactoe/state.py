@@ -3,7 +3,7 @@ import copy
 
 
 class State:
-    def __init__(self, board, current_player):
+    def __init__(self, board = numpy.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), current_player = 1):
         self.board = board
         self.current_player = current_player
 

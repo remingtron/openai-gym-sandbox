@@ -1,4 +1,3 @@
-import numpy
 import copy
 
 from tictactoe.state import State
@@ -7,7 +6,7 @@ from tictactoe.state import State
 class StateGenerator:
     @staticmethod
     def generate(depth):
-        initial_states = [State(numpy.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), 1)]
+        initial_states = [State()]
         return StateGenerator.generate_from_states(initial_states, depth)
 
     @staticmethod
